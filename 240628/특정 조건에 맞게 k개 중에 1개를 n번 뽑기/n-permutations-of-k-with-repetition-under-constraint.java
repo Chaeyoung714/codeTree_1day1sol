@@ -26,12 +26,9 @@ public class Main {
         }
 
         for (int val=1; val<=k; val++) {
-            if (depth > 0 && arr[depth-1] == val) {
-                if (isDuplicate) {
-                    isDuplicate = false; //연속상태를 끊음
+            if (depth > 1 && arr[depth-1] == val) {
+                if (arr[depth-1] == arr[depth-2]) {
                     continue;
-                } else {
-                    isDuplicate = true;
                 }
             }
             arr[depth] = val;
