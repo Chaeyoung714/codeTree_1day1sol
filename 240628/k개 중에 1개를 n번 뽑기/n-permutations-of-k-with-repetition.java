@@ -12,7 +12,7 @@ public class Main {
         k = sc.nextInt();
         n = sc.nextInt();
 
-        result = new int[10000][n];
+        result = new int[1000000][n];
         arr = new int[n];
 
         choose(0); //0자리수(첫번째)부터 백트래킹 시작 
