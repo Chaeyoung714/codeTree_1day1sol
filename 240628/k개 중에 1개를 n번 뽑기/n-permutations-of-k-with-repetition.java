@@ -12,7 +12,7 @@ public class Main {
         k = sc.nextInt();
         n = sc.nextInt();
 
-        result = new int[1000000][n];
+        // result = new int[1000000][n];
         arr = new int[n];
 
         choose(0); //0자리수(첫번째)부터 백트래킹 시작 
@@ -27,10 +27,10 @@ public class Main {
 
     public static void choose(int depth) {
         if (depth > n-1) { //종료조건
-            for (int i=0; i<n; i++) {
-                result[endOfResult++][i] = arr[i];
-            }
-            result[endOfResult++] = arr;
+            // for (int i=0; i<n; i++) {
+            //     result[endOfResult++][i] = arr[i];
+            // }
+            // result[endOfResult++] = arr;
 
             for (int elem: arr) {
                 System.out.print(elem + " ");
