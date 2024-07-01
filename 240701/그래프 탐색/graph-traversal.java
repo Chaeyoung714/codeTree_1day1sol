@@ -42,6 +42,7 @@ public class Main {
     }
 
     public static void dfs(int currIdx) {
+        // 이렇게 말고 일반적인 DFS로 접근하기
         // if (currIdx == 1 && visited[fromIdx][currIdx] == 1) { //시작점에 재방문시
         //     return;
         // }
@@ -54,21 +55,14 @@ public class Main {
                 cnt++; //정점 수
                 fromIdx = currIdx;
                 toIdx = i;
-                
+
+                // 한번 방문하면 다른 점에서 방문하는 것도 모두 막아야함!!!
                 for (int j=1; j<=n; j++) {
                     if (graph[j][toIdx] == 1) {
                         visited[j][toIdx] = 1;
                     }
                 }
                 // visited[fromIdx][toIdx] = 1;
-
-                // for (int[] arr: visited) {
-                //     for (int v: arr) {
-                //         System.out.print(v + " ");
-                //     }
-                //     System.out.println();
-                // }
-                // System.out.println("nextnextnextnextnxet");
 
                 dfs(toIdx);
             }
