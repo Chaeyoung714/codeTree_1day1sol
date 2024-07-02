@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Main {
 
-    public static int n;
+    public static int n, m;
     public static int[][] grid, visited;
     public static int[] dx = {-1, 1, 0, 0};
     public static int[] dy = {0, 0, -1, 1};
@@ -20,12 +20,12 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         n = sc.nextInt();
-        int m = sc.nextInt();
+        m = sc.nextInt();
 
-        grid = new int[n][n];
-        visited = new int[n][n];
+        grid = new int[m][n];
+        visited = new int[m][n];
 
-        for (int i=0; i<n; i++) {
+        for (int i=0; i<m; i++) {
             for (int j=0; j<n; j++) {
                 grid[i][j] = sc.nextInt();
             }
