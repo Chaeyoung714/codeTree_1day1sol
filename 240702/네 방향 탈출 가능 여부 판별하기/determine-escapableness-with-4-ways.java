@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Main {
 
     public static int n;
-    public static int[][] grid;
+    public static int[][] grid, visited;
     public static int[] dx = {-1, 1, 0, 0};
     public static int[] dy = {0, 0, -1, 1};
 
@@ -23,6 +23,7 @@ public class Main {
         int m = sc.nextInt();
 
         grid = new int[n][n];
+        visited = new int[n][n];
 
         for (int i=0; i<n; i++) {
             for (int j=0; j<n; j++) {
@@ -31,6 +32,7 @@ public class Main {
         }
 
         queue.add(new int[] {0, 0});
+        visited[0][0] = 1;
         boolean result = escape();
 
         if (result) {
@@ -51,10 +53,11 @@ public class Main {
                 int nx = x + dx[d];
                 int ny = y + dy[d];
 
-                if (inRange(nx, ny) && grid[nx][ny] == 1) {
+                if (inRange(nx, ny) && visited[nx][ny] == 0 && grid[nx][ny] == 1) {
                     if (nx == n-1 && ny == n-1) {
                         return true;
                     }
+                    visited[nx][ny] = 1;
                     queue.add(new int[] {nx, ny});
                 }
             }
