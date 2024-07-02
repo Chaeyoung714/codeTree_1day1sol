@@ -54,7 +54,7 @@ public class Main {
                 int ny = y + dy[d];
 
                 if (inRange(nx, ny) && visited[nx][ny] == 0 && grid[nx][ny] == 1) {
-                    if (nx == n-1 && ny == n-1) {
+                    if (nx == m-1 && ny == n-1) {
                         return true;
                     }
                     visited[nx][ny] = 1;
