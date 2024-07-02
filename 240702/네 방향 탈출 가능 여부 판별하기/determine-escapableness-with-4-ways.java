@@ -22,11 +22,11 @@ public class Main {
         n = sc.nextInt();
         m = sc.nextInt();
 
-        grid = new int[m][n];
-        visited = new int[m][n];
+        grid = new int[n][m];
+        visited = new int[n][m];
 
-        for (int i=0; i<m; i++) {
-            for (int j=0; j<n; j++) {
+        for (int i=0; i<n; i++) {
+            for (int j=0; j<m; j++) {
                 grid[i][j] = sc.nextInt();
             }
         }
@@ -54,7 +54,7 @@ public class Main {
                 int ny = y + dy[d];
 
                 if (inRange(nx, ny) && visited[nx][ny] == 0 && grid[nx][ny] == 1) {
-                    if (nx == m-1 && ny == n-1) {
+                    if (nx == n-1 && ny == m-1) {
                         return true;
                     }
                     visited[nx][ny] = 1;
