@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 public class Main {
     public static int m;
+    public static boolean satisfied;
     public static int[] coins, DP;
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -18,35 +19,32 @@ public class Main {
         }
         Arrays.sort(coins);
 
-        boolean satisfied; 
-
         for (int i=1; i<coins[0]; i++) {
             DP[i] = -1; //사용불가 
         }
 
         for (int total=1; total<=m; total++) { //모든 합에 대해
-            // countCoins(i);
-            satisfied = false;
-            int minSum = Integer.MAX_VALUE;
-
-            for (int coin: coins) {
-                if (total >= coin && DP[total-coin] != -1) {
-                    satisfied = true;
-                    minSum = Math.min(DP[total-coin], minSum);
-                }
-            }
-
-            if (satisfied) {
-                DP[total] = minSum + 1;
-            } else {
-                DP[total] = -1;
-            }
+            countCoins(total);
         }
 
         System.out.println(DP[m]);
     }
 
-    public static void countCoins(int i) {
-        
+    public static void countCoins(int total) {
+        satisfied = false;
+        int minSum = Integer.MAX_VALUE;
+
+        for (int coin: coins) {
+            if (total >= coin && DP[total-coin] != -1) {
+                satisfied = true;
+                minSum = Math.min(DP[total-coin], minSum);
+            }
+        }
+
+        if (satisfied) {
+            DP[total] = minSum + 1;
+        } else {
+            DP[total] = -1;
+        }
     }
 }
