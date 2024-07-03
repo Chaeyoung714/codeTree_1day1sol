@@ -13,25 +13,28 @@ public class Main {
             nums[i] = sc.nextInt();
         }
 
+        int result = 0;
         for (int i=0; i<n; i++) {
             if (i == 0) {
                 DP[i] = 1;
-                continue;
-            }
-
-            int maxLgth = 0;
-            for (int j=0; j<i; j++) {
-                if (nums[j] < nums[i]) {
-                    if (maxLgth < DP[j]) {
+            } else {
+                int maxLgth = 0;
+                for (int j=0; j<i; j++) {
+                    if (nums[j] < nums[i] && maxLgth < DP[j]) { //i번째가 증가수열에 포함되면
                         maxLgth = DP[j];
                     }
                 }
+                maxLgth++;
+                
+                // DP[i] = Math.max(DP[i-1], maxLgth);
+                DP[i] = maxLgth;
             }
-            maxLgth++;
-            
-            DP[i] = Math.max(DP[i-1], maxLgth);
+
+            if (DP[i] > result) {
+                result = DP[i];
+            }
         }
 
-        System.out.println(DP[n-1]);
+        System.out.println(result);
     }
 }
