@@ -13,10 +13,10 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        DP[0] = arr[0] * 2;
+        DP[0] = arr[0];
         int maxSum = DP[0];
         for (int i=1; i<n; i++) {
-            DP[i] = Math.max(DP[i-1], 2*arr[i]);
+            DP[i] = Math.max(DP[i-1]+arr[i], arr[i]);
             if (maxSum < DP[i]) {
                 maxSum = DP[i];
             }
