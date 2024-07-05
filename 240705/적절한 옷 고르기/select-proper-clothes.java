@@ -25,14 +25,6 @@ public class Main {
                 clothes[i][j] = v;
             }
         }
-        
-        // System.out.println("Clothesclothesclothesclothes");
-        // for (int[] arr: clothes) {
-        //     for (int elem: arr) {
-        //         System.out.print(elem + " ");
-        //     }
-        //     System.out.println();
-        // }
 
         // 초기화 : DP[1][k] = 모두 0
 
@@ -43,14 +35,6 @@ public class Main {
                 }
             }
         }
-        
-        // System.out.println("DPDPDPDPDP");
-        // for (int[] arr: DP) {
-        //     for (int elem: arr) {
-        //         System.out.print(elem+ " ");
-        //     }
-        //     System.out.println();
-        // }
 
 
         int maxResult = -1;
@@ -63,7 +47,7 @@ public class Main {
     }
 
     public static void chooseCloth(int day, int cloth) {
-        int maxGap = -1;
+        int maxGap = -Integer.MAX_VALUE;
         int maxGapIdx = -1;
         int v = clothes[day][cloth]; //현재 옷의 화려함값 
 
@@ -71,15 +55,30 @@ public class Main {
             if (k == cloth) { //현재와 동일한 옷이면 패스
                 continue;
             }
-            if (isWearable(day-1, k)) {
-                int gap = Math.abs(clothes[day-1][k] - v);
+            if (isWearable(day-1, k) == true) {
+                int gap = Math.abs(v - clothes[day-1][k]);
+                // System.out.println("gap= " + gap);
                 if (gap > maxGap) {
                     maxGap = gap;
                     maxGapIdx = k;
                 }
             }
         }
-        DP[day][cloth] = DP[day-1][maxGapIdx] + maxGap;
+        // DP[day][cloth] = DP[day-1][maxGapIdx] + maxGap;
+
+        if (maxGapIdx != -1) {
+            DP[day][cloth] = DP[day-1][maxGapIdx] + maxGap;
+        } else {
+            DP[day][cloth] = 0; // 전날 입을 수 있는 옷이 없을 경우 초기화
+            /**
+            * ex) clothes = 
+            *    0 5
+            *    10 5
+            *    10 0 일때
+            * 두번째줄 두번째 5 => 전날 중 입을 옷 없음 
+            * 
+            */
+        }
 
         return;
     }
