@@ -68,10 +68,7 @@ public class Main {
         }
         // DP[day][cloth] = DP[day-1][maxGapIdx] + maxGap;
 
-        if (maxGapIdx != -1) {
-            DP[day][cloth] = DP[day-1][maxGapIdx] + maxGap;
-        } else {
-            DP[day][cloth] = 0; // 전날 입을 수 있는 옷이 없을 경우 초기화
+        DP[day][cloth] = DP[day-1][maxGapIdx] + maxGap;
             /**
             * ex) clothes = 
             *    0 5
@@ -80,7 +77,6 @@ public class Main {
             * 두번째줄 두번째 5 => 전날 중 입을 옷 없음 
             * 
             */
-        }
 
         return;
     }
