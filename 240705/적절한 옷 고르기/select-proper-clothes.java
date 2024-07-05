@@ -39,9 +39,11 @@ public class Main {
 
         int maxResult = -1;
         for (int elem: DP[m]) {
+            System.out.print(elem + " ");
             if (maxResult < elem) {
                 maxResult = elem;
             }
+            System.out.println();
         }
         System.out.println(maxResult);
     }
@@ -50,17 +52,12 @@ public class Main {
         int maxGap = -Integer.MAX_VALUE;
         int maxGapIdx = -1;
         int v = clothes[day][cloth]; //현재 옷의 화려함값 
-        boolean satisfied = false; //현재 입을 옷이 있는지 
 
         for (int k=1; k<=n; k++) {
-            // if (k == cloth) { //현재와 동일한 옷이면 패스
-            //     continue;
-            // }
-            if (isWearable(day-1, k) == true) {
+            if (isWearable(day-1, k)) {
                 int gap = Math.abs(v - clothes[day-1][k]);
                 // System.out.println("gap= " + gap);
                 if (gap > maxGap) {
-                    satisfied = true;
                     maxGap = gap;
                     maxGapIdx = k;
                 }
@@ -69,14 +66,6 @@ public class Main {
         // DP[day][cloth] = DP[day-1][maxGapIdx] + maxGap;
 
         DP[day][cloth] = DP[day-1][maxGapIdx] + maxGap;
-            /**
-            * ex) clothes = 
-            *    0 5
-            *    10 5
-            *    10 0 일때
-            * 두번째줄 두번째 5 => 전날 중 입을 옷 없음 
-            * 
-            */
 
         return;
     }
