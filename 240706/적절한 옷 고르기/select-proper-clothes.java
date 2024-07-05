@@ -27,16 +27,8 @@ public class Main {
         }
 
         // 초기화 : DP[1][k] = 모두 0
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                DP[i][j] = -1;
-            }
-        }
-
         for (int j = 1; j <= n; j++) {
-            if (isWearable(1, j)) {
-                DP[1][j] = 0; // 첫 날은 화려함이 0
-            }
+            DP[1][j] = 0; // 첫 날은 화려함이 0
         }
 
 
