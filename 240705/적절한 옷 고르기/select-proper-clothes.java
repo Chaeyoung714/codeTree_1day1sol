@@ -50,15 +50,17 @@ public class Main {
         int maxGap = -Integer.MAX_VALUE;
         int maxGapIdx = -1;
         int v = clothes[day][cloth]; //현재 옷의 화려함값 
+        boolean satisfied = false; //현재 입을 옷이 있는지 
 
         for (int k=1; k<=n; k++) {
-            if (k == cloth) { //현재와 동일한 옷이면 패스
-                continue;
-            }
+            // if (k == cloth) { //현재와 동일한 옷이면 패스
+            //     continue;
+            // }
             if (isWearable(day-1, k) == true) {
                 int gap = Math.abs(v - clothes[day-1][k]);
                 // System.out.println("gap= " + gap);
                 if (gap > maxGap) {
+                    satisfied = true;
                     maxGap = gap;
                     maxGapIdx = k;
                 }
