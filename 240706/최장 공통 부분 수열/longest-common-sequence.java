@@ -5,8 +5,8 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        String strA = sc.next();
-        String strB = sc.next();
+        String strA = sc.nextLine();
+        String strB = sc.nextLine();
 
         String[] a = strA.split("");
         String[] b = strB.split("");
@@ -19,10 +19,10 @@ public class Main {
         //초기화
         for (int i=0; i<lenA; i++) {
             if (i == 0) {
-                if (a[i].equals(b[0])) {
-                    DP[i][0] = 1;
+                if (a[0].equals(b[0])) {
+                    DP[0][0] = 1;
                 } else {
-                    DP[i][0] = 0;
+                    DP[0][0] = 0;
                 }
                 continue;
             }
@@ -33,12 +33,7 @@ public class Main {
             }
         }
         for (int j=0; j<lenB; j++) {
-            if (j == 0) {
-                if (a[0].equals(b[j])) {
-                    DP[0][j] = 1;
-                } else {
-                    DP[0][j] = 0;
-                }
+            if (j==0) {
                 continue;
             }
             if (a[0].equals(b[j])) {
@@ -48,6 +43,7 @@ public class Main {
             }
         }
 
+        //DP채움
         for (int i=1; i<lenA; i++) {
             for (int j=1; j<lenB; j++) {
                 if (a[i].equals(b[j])) {
