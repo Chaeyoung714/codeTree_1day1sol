@@ -17,10 +17,10 @@ public class Main {
             DP[3] = 1;
 
             for (int i=4; i<=n; i++) {
-                DP[i] = DP[i-2] + DP[i-3];
+                DP[i] = (DP[i-2] + DP[i-3]) % 10007;
             }
 
-            System.out.println(DP[n] % 10007);
+            System.out.println(DP[n]);
         }
     }
 }
