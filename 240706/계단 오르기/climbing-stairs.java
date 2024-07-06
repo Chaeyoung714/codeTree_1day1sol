@@ -16,7 +16,7 @@ public class Main {
             DP[2] = 1;
             DP[3] = 1;
 
-            for (int i=1; i<=n; i++) {
+            for (int i=4; i<=n; i++) {
                 DP[i] = DP[i-2] + DP[i-3];
             }
 
