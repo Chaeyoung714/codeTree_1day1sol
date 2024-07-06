@@ -20,7 +20,7 @@ public class Main {
                 DP[i] = DP[i-2] + DP[i-3];
             }
 
-            System.out.println(DP[n]);
+            System.out.println(DP[n] % 10007);
         }
     }
 }
