@@ -18,17 +18,33 @@ public class Main {
 
         //초기화
         for (int i=0; i<lenA; i++) {
+            if (i == 0) {
+                if (a[i].equals(b[0])) {
+                    DP[i][0] = 1;
+                } else {
+                    DP[i][0] = 0;
+                }
+                continue;
+            }
             if (a[i].equals(b[0])) {
-                DP[i][0] = 1;
+                DP[i][0] = DP[i-1][0] + 1;
             } else {
-                DP[i][0] = 0;
+                DP[i][0] = DP[i-1][0];
             }
         }
         for (int j=0; j<lenB; j++) {
-            if (b[j].equals(a[0])) {
-                DP[0][j] = 1;
+            if (j == 0) {
+                if (a[0].equals(b[j])) {
+                    DP[0][j] = 1;
+                } else {
+                    DP[0][j] = 0;
+                }
+                continue;
+            }
+            if (a[0].equals(b[j])) {
+                DP[0][j] = DP[0][j-1] + 1;
             } else {
-                DP[0][j] = 0;
+                DP[0][j] = DP[0][j-1];
             }
         }
 
