@@ -25,7 +25,7 @@ public class Main {
 
         for (int i=1; i<n; i++) {
             for (int j=1; j<n; j++) {
-                if (grid[i][j] <= DP[i-1][j] && grid[i][j] <= DP[i][j-1]) { //모든 경로에서 최소임 -> 모든 경로에서 최솟값으로 등록
+                if (grid[i][j] <= DP[i-1][j] || grid[i][j] <= DP[i][j-1]) { //모든 경로에서 최소임 -> 모든 경로에서 최솟값으로 등록
                     DP[i][j] = grid[i][j];
                 } else { //else: 두 경로 각각 최솟값 존재 -> 더 큰 값 저장 
                     DP[i][j] = Math.max(DP[i-1][j], DP[i][j-1]);
