@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    public static int n;
+    public static int n, maxNum;
     public static int totalCnt = 0;
     public static int[] result;
     public static void main(String[] args) {
@@ -10,6 +10,12 @@ public class Main {
 
         int n = sc.nextInt();
         result = new int[n];
+
+        if (n < 4) {
+            maxNum = n;
+        } else {
+            maxNum = 4;
+        }
 
         beautifulNumber(0, 0, 0);
 
@@ -29,8 +35,9 @@ public class Main {
         if (cnt < lastVal) { //한묶음 완성이 안됐으면
             result[depth] = lastVal;
             beautifulNumber(depth+1, lastVal, cnt+1);
+            
         } else if (cnt == lastVal) { //한묶음 완성이 됐으면
-            for (int newVal=1; newVal<=4; newVal++) {
+            for (int newVal=1; newVal<=maxNum; newVal++) {
                 result[depth] = newVal;
                 beautifulNumber(depth+1, newVal, 1);
 
