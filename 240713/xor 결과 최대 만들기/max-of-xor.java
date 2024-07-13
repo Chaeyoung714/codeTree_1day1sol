@@ -49,6 +49,14 @@ public class Main {
             for (int elem:nums) {
                 maxResult = Math.max(maxResult, elem);
             }
+        } else if (m == n) {
+            for (int i=0; i<m-1; i++) {
+                if (i==0) {
+                    maxResult = nums[i] ^ nums[i+1];
+                } else {
+                    maxResult = maxResult ^ nums[i+1];
+                }
+            }
         } else {
             findMax(0);
         }
