@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static int n, m;
@@ -39,6 +40,8 @@ public class Main {
             nums[i] = sc.nextInt();
         }
 
+        Arrays.sort(nums);
+
 
         if (m == 1) {
             for (int elem:nums) {
@@ -54,7 +57,7 @@ public class Main {
 
     public static void findMax(int depth) {
         if (depth > m - 1) {
-            int result = 0;
+            int result = -1;
             for (int j=0; j<m-1; j++) {
                 if (j == 0) {
                     result = resultList.get(j) ^ resultList.get(j+1);
@@ -71,12 +74,19 @@ public class Main {
             }
             return;
         }
+        
+        int currVal = -1;
+        if (depth == 0) {
+            currVal = 0;
+        } else {
+            currVal = resultList.get(resultList.size()-1);
+        }
 
-        for (int i=0; i<n; i++) {
-            if (resultList.contains(nums[i])) {
+        for (int i=currVal; i<n; i++) {
+            if (nums[i] <= currVal) {
                 continue;
             }
-            resultList.add(nums[i]);
+            resultList.add(nums[i]); //지금까지 선택된 값들보다 큰 값에 대해서만 진행 - 중복 방지 위해
             findMax(depth+1);
             resultList.remove(resultList.size()-1);
         }
