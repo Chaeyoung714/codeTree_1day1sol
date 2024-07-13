@@ -40,8 +40,13 @@ public class Main {
         }
 
 
-
-        findMax(0);
+        if (m == 1) {
+            for (int elem:nums) {
+                maxResult = Math.max(maxResult, elem);
+            }
+        } else {
+            findMax(0);
+        }
 
         System.out.println(maxResult);
 
@@ -50,13 +55,15 @@ public class Main {
     public static void findMax(int depth) {
         if (depth > m - 1) {
             int result = 0;
-            for (int j=1; j<m; j++) {
-                if (j == 1) {
-                    result = resultList.get(j-1) ^ resultList.get(j);
+            for (int j=0; j<m-1; j++) {
+                if (j == 0) {
+                    result = resultList.get(j) ^ resultList.get(j+1);
                 } else {
-                    result = result ^ resultList.get(j);
+                    result = result ^ resultList.get(j+1);
                 }
             } 
+
+            System.out.println("result=" + result);
 
             // int resultInt = Integer.parseInt(result, 2);
             if (result > maxResult) {
