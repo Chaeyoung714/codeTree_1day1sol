@@ -82,7 +82,7 @@ public class Main {
             currVal = resultList.get(resultList.size()-1);
         }
 
-        for (int i=currVal; i<n; i++) {
+        for (int i=0; i<n; i++) {
             if (nums[i] <= currVal) {
                 continue;
             }
