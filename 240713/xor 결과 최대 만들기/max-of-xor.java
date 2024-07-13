@@ -63,7 +63,7 @@ public class Main {
                 }
             } 
 
-            System.out.println("result=" + result);
+            // System.out.println("result=" + result);
 
             // int resultInt = Integer.parseInt(result, 2);
             if (result > maxResult) {
