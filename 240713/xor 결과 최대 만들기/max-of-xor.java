@@ -41,7 +41,9 @@ public class Main {
         }
 
         Arrays.sort(nums);
-
+        // for (int elem: nums) {
+        //     System.out.print(elem + " ");
+        // }
 
         if (m == 1) {
             for (int elem:nums) {
@@ -76,9 +78,7 @@ public class Main {
         }
         
         int currVal = -1;
-        if (depth == 0) {
-            currVal = 0;
-        } else {
+        if (depth != 0) {
             currVal = resultList.get(resultList.size()-1);
         }
 
