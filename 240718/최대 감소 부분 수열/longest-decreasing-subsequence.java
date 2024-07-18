@@ -13,10 +13,11 @@ public class Main {
             sequence[i] = sc.nextInt();
         }
 
-        boolean satisfied = false;
 
         // DP[1] = 1;
         for (int i=1; i<=n; i++) {
+            boolean satisfied = false; //매번 초기화
+
             if (i == 1){
                 DP[i] = 1;
                 continue;
