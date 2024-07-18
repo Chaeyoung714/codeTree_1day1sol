@@ -23,7 +23,7 @@ public class Main {
                 continue;
             }
 
-            for (int j=i; j>=1; j--) {
+            for (int j=i-1; j>=1; j--) {
                 if (sequence[j] > sequence[i]) {
                     DP[i] = DP[j] + 1;
                     satisfied = true;
