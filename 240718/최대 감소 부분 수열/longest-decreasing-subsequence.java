@@ -16,7 +16,7 @@ public class Main {
 
         // DP[1] = 1;
         for (int i=1; i<=n; i++) {
-            boolean satisfied = false; //매번 초기화
+            int maxLength = -1; //매번 초기화
 
             if (i == 1){
                 DP[i] = 1;
@@ -25,25 +25,28 @@ public class Main {
 
             for (int j=i-1; j>=1; j--) {
                 if (sequence[j] > sequence[i]) {
-                    DP[i] = DP[j] + 1;
-                    satisfied = true;
-                    break;
+                    if (maxLength < DP[j]+1) {
+                        maxLength = DP[j] + 1;
+                    }
                 }
             }
             
-            if (!satisfied) {
+            if (maxLength == -1) {
                 DP[i] = 1;
+            } else {
+                DP[i] = maxLength;
             }
         }
 
-        int maxLength = 0;
+        int totalMaxLength = 0;
         for (int elem: DP) {
-            if (maxLength < elem) {
-                maxLength = elem;
+            // System.out.print(elem + " ");
+            if (totalMaxLength < elem) {
+                totalMaxLength = elem;
             }
         }
-        System.out.println(maxLength);
+        System.out.println(totalMaxLength);
 
-
+        
     }
 }
