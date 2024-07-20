@@ -22,7 +22,10 @@ public class Main {
             int maxJump = -1;
 
             for (int j=0; j<i; j++) {
-                if (j + locations[j] >= i) {
+                if (j + locations[j] >= i) { 
+                    if (j != 0 && DP[j] == 0) {//DP[j] = 0이면 거기서 뛸수 없음
+                        continue;
+                    }
                     maxJump = Math.max(maxJump, DP[j]);
                 }
             }
@@ -36,6 +39,7 @@ public class Main {
 
         int result = -1;
         for (int elem: DP) {
+            // System.out.print(elem + " ");
             result = Math.max(result, elem);
         }
         System.out.println(result);
