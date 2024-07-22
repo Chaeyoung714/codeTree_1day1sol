@@ -16,6 +16,7 @@ public class Main {
         n = sc.nextInt();
         int[][] grid = new int[n][n];
         Queue<int[]> queue = new LinkedList<>();
+        int[][] visited = new int[n][n];
 
         int r1 = sc.nextInt() - 1;
         int c1 = sc.nextInt() - 1;
@@ -32,6 +33,7 @@ public class Main {
             int x = target[0];
             int y = target[1];
             depth = target[2];
+            visited[x][y] = 1;
 
             // System.out.println(x + ", " + y + ", " + depth);
 
@@ -47,7 +49,7 @@ public class Main {
                 int nx = x + dx[d];
                 int ny = y + dy[d];
 
-                if (inRange(nx, ny)) {
+                if (inRange(nx, ny) && visited[nx][ny] == 0) { //방문한 곳은 dfs하지 않음
                     queue.add(new int[] {nx, ny, depth});
                 }
             }
