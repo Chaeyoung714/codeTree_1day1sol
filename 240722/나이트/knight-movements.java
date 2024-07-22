@@ -33,7 +33,6 @@ public class Main {
             int x = target[0];
             int y = target[1];
             depth = target[2];
-            visited[x][y] = 1;
 
             // System.out.println(x + ", " + y + ", " + depth);
 
@@ -51,6 +50,7 @@ public class Main {
 
                 if (inRange(nx, ny) && visited[nx][ny] == 0) { //방문한 곳은 dfs하지 않음
                     queue.add(new int[] {nx, ny, depth});
+                    visited[nx][ny] = 1;
                 }
             }
         }
