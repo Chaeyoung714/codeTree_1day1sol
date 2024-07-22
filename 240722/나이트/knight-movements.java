@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Main {
     public static int n;
-    public static int[] dx = {-2, -1, 1, 2, 2, 1, -1, -1};
+    public static int[] dx = {-2, -1, 1, 2, 2, 1, -1, -2};
     public static int[] dy = {1, 2, 2, 1, -1, -2, -2, -1};
     public static boolean inRange(int x, int y) {
         return (x >= 0 && x < n && y >= 0 && y < n);
