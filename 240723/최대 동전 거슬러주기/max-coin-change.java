@@ -38,6 +38,10 @@ public class Main {
             }
         }
 
-        System.out.println(DP[m]);
+        if (DP[m] == 0) {
+            System.out.println(-1);
+        } else {
+            System.out.println(DP[m]);
+        }
     }
 }
