@@ -94,7 +94,14 @@ public class Main {
         //     System.out.println();
         // }
 
-        System.out.println(DP[n-1][n-1]);
+        int maxScore = -1;
+        for (int i=0; i<n; i++) {
+            maxScore = Math.max(maxScore, DP[i][n-1]);
+        }
+        for (int j=0; j<n; j++) {
+            maxScore = Math.max(maxScore, DP[n-1][j]);
+        }
+        System.out.println(maxScore);
     }
 
 
