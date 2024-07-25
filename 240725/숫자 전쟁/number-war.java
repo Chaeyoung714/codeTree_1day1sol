@@ -87,12 +87,12 @@ public class Main {
             }
         }
 
-        for (int[] arr: DP) {
-            for (int elem: arr) {
-                System.out.print(elem + " ");
-            }
-            System.out.println();
-        }
+        // for (int[] arr: DP) {
+        //     for (int elem: arr) {
+        //         System.out.print(elem + " ");
+        //     }
+        //     System.out.println();
+        // }
 
         System.out.println(DP[n-1][n-1]);
     }
