@@ -66,6 +66,13 @@ public class Main {
             }
         }
 
+        for (int i=a-1; i>=0; i--) {
+            if (arrB[b].equals(arrA[i])) { //SAB -> ABA의 경우           
+                // System.out.println("a = " + a + arrA[a] + " b = " + j + arrB[j]);
+                return DP[i][b] + (a - i); //(SA -> A) + (X -> A)
+            }
+        }
+
         return -1;
 
     }
