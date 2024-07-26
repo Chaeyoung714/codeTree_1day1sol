@@ -35,9 +35,11 @@ public class Main {
                     result = countIncludingDuplication(i-1, j-1); //arrA, arrB 상에서의 인덱스
                     if (result == -1) {
                         if (i != j) { //len(a) >, < len(b)
-                            result = DP[i-1][j]; //삽입, 삭제 - 마지막 글자는 교체로
+                            // result = DP[i-1][j]; //삽입, 삭제 - 마지막 글자는 교체로
+                            result = Math.max(i, j);
                         } else {
-                            result = DP[i-1][j-1] + 1; //교체
+                            // result = DP[i-1][j-1] + 1; //교체
+                            result = i;
                         }
                     }
                 }
