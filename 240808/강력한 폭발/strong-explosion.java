@@ -40,11 +40,6 @@ public class Main {
             }
         }
 
-        // System.out.println("bombCnt = " + bombCnt);
-        // for (int[] arr: bombPoints) {
-        //     System.out.println(arr[0] + ", " + arr[1]);
-        // }
-
         maxCnt = -1;
         int pointX = bombPoints.get(0)[0];
         int pointY = bombPoints.get(0)[1];
@@ -66,15 +61,6 @@ public class Main {
 
         if (depth >= bombCnt - 1) { //바닥조건, backtrack
             maxCnt = Math.max(currCnt, maxCnt);
-
-            //debug
-            // System.out.println("bomb = " + bomb + ", currCnt = " + currCnt + ", maxCnt = " + maxCnt);
-            // for (int[] arr: visited) {
-            //     for (int elem: arr) {
-            //         System.out.print(elem + " ");
-            //     }
-            //     System.out.println();
-            // }
             return;
         }
 
@@ -82,25 +68,8 @@ public class Main {
         int nextPointY = bombPoints.get(depth+1)[1];
         for (int b=1; b<=3; b++) {
             int[][] prevVisited = deepCopy(visited); //해결 : prevVisited를 전역이 아닌 지역변수로 사용!!!!
-            //debug
-            // System.out.println("prevvisited!!!!!!" + ": depth = " + depth + ", bomb = " + bomb);
-            // for (int[] arr: prevVisited) {
-            //     for (int elem: arr) {
-            //         System.out.print(elem + " ");
-            //     }
-            //     System.out.println();
-            // }
-
             countDestroyedAreas(nextPointX, nextPointY, depth+1, b, currCnt); //visited를 가지고 dfs돎
-        
             visited = deepCopy(prevVisited); //이전버전 visited를 복사
-            // System.out.println("visited!!!!!!");
-            // for (int[] arr: visited) {
-            //     for (int elem: arr) {
-            //         System.out.print(elem + " ");
-            //     }
-            //     System.out.println();
-            // }
         }
         
     }
