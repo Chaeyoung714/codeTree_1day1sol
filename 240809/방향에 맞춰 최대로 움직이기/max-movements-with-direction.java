@@ -46,7 +46,7 @@ public class Main {
         // System.out.println("x = " + x + ", y = " + y + ", cnt = " + cnt + canMove);
 
         int dir = dirArray[x][y];
-        for (int i = 1; i < n; i++) { //최소 1, 최대 n-1번 이동함
+        for (int i = 1; i <= n; i++) { //최소 1, 최대 n번 이동함
             if (canMove == false) { //바닥조건 - 볼수있는 case가 하나밖에 없으므로 이렇게 설정되네.
                 // System.out.println("!!!x = " + x + ", y = " + y + ", cnt = " + cnt + canMove + ", " + i);
 
