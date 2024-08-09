@@ -34,7 +34,11 @@ public class Main {
         maxCnt = -1;
         countMove(startX, startY, 0); //해당 위치에서 움직일 수 있는 모든 횟수 중 최대횟수를 구함 
 
-        System.out.println(maxCnt);
+        if (maxCnt == -1) {
+            System.out.println(0);
+        } else {
+            System.out.println(maxCnt);
+        }
     }
 
     public static void countMove(int x, int y, int cnt) {
@@ -58,8 +62,6 @@ public class Main {
             if (inRange(nx, ny)) {
                 if (numArray[nx][ny] > numArray[x][y]) { //두 조건을 한번에 뭉치면 1트에서 실패하면 그뒤로는 진행을 못함
                     countMove(nx, ny, cnt+1);
-                } else {
-                    continue;
                 }
             } else {
                 canMove = false;
