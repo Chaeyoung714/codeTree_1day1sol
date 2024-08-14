@@ -124,7 +124,6 @@ public class Main {
                         }
                     }
                 }
-
                 moveDists[i][j] = cnt;
 
             }
@@ -135,7 +134,7 @@ public class Main {
         if (depth == 3) { //바닥조건
             moveCnt += moveDists[from][pointsListSize-1]; //from -> end로
             minMoveCnt = Math.min(moveCnt, minMoveCnt);
-            // System.out.println(", from = " + from + ", minCnt = " + minMoveCnt);
+            // System.out.println(", from = " + from + ", moveCnt = " + moveCnt + ", minCnt = " + minMoveCnt);
             return;
         }
         if (from == pointsListSize - 2 && depth < 3) { //depth=3이 되기 전에 최대 숫자를 방문했다면 -> 중단
@@ -148,6 +147,7 @@ public class Main {
         for (int to=from+1; to<pointsListSize-1; to++) {
             moveCnt += moveDists[from][to]; //from -> to로
             findMinMoveCnt(to, depth+1, moveCnt);
+            moveCnt -= moveDists[from][to]; //항상 원복시키기
         }
     }
 }
