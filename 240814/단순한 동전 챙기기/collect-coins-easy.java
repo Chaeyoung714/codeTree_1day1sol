@@ -8,7 +8,7 @@ public class Main {
     public static int MAX_VALUE = Integer.MAX_VALUE;
     public static int minMoveCnt = MAX_VALUE;
     public static int n, coinCnt, pointsListSize;
-    public static int[][] moveDists;
+    public static int[][] moveDists, visited;
     public static List<int[]> points = new ArrayList<>();
     public static int[] dx = {-1, 1, 0, 0};
     public static int[] dy = {0, 0, -1, 1};
@@ -93,7 +93,6 @@ public class Main {
         for (int i=0; i<pointsListSize; i++) {
             for (int j=0; j<pointsListSize; j++) {
                 if (i >= j) { //예외 - 더 큰 숫자로의 이동만 가능함 
-                    moveDists[i][j] = -1;
                     continue;
                 }
                 // int startX = points.get(i).getX();
@@ -111,6 +110,7 @@ public class Main {
 
                 //BFS로 start -> arrive까지의 최소경로 구하기
                 boolean arrived = false;
+                visited = new int[n][n];
                 while (!arrived) {
                     int[] pointInfo = queue.remove(); //없으면 에러 반환
                     int x = pointInfo[0];
@@ -121,13 +121,14 @@ public class Main {
                         int nx = x + dx[d];
                         int ny = y + dy[d];
 
-                        if (inRange(nx, ny)) {
+                        if (inRange(nx, ny) && visited[nx][ny] == 0) {
                             if (nx == arriveX && ny == arriveY) {
                                 arrived = true;
                                 cnt++;
                                 break;
                             }
                             queue.add(new int[]{nx, ny, cnt+1});
+                            visited[nx][ny] = 1;
                         }
                     }
                 }
