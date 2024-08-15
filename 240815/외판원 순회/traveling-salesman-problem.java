@@ -33,7 +33,7 @@ public class Main {
         }
 
         for (int to=0; to<n; to++) {
-            if (visited[to] == 0) {
+            if (visited[to] == 0 && costs[from][to] != 0) {
                 visited[to] = 1;
                 findMinCost(to, cost + costs[from][to], depth+1);
                 visited[to] = 0;
