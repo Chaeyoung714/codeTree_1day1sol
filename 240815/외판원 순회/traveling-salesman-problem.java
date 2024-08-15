@@ -27,8 +27,10 @@ public class Main {
 
     public static void findMinCost(int from, int cost, int depth) {
         if (depth >= n-1) { //n-1번 이동 후
-            cost += costs[from][0];
-            minCost = Math.min(minCost, cost);
+            if (costs[from][0] != 0) {
+                cost += costs[from][0];
+                minCost = Math.min(minCost, cost);
+            }
             return;
         }
 
